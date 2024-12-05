@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  postgres-db:
+    image: postgres:latest # Postgres version
+    container_name: subscriber-container
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: insecure-pass
+      POSTGRES_DB: subs_db # database name to created
+    ports:
+      - "5432:5432"  # Mapea el puerto 5432 del contenedor al puerto 5432 de la máquina
+    volumes:
+      - postgres-data:/var/lib/postgresql/data  # Volumen para persistir los datos
+    networks:
+      - subs-net
+
+networks:
+  subs-net:
+    driver: bridge
+
+volumes:
+  postgres-data:

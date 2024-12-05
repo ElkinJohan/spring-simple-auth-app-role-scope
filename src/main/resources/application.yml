@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: subscriber
+  datasource:
+    url: jdbc:postgresql://localhost:5432/subs_db
+    username: user
+    password: insecure-pass
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  port: 6543
+# swagger
+springdoc:
+  api-docs:
+    enabled: true
